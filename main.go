@@ -1,8 +1,11 @@
 package main
 
-import "fmt"
-import "strconv"
-import "strings"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+	"learn-go/utils"
+)
 
 func main() {
 	var name string = "messi"
@@ -37,8 +40,14 @@ func main() {
 		i++
 	}
 
-	var message = []string{"Thank", "you"}
+	var message = []string{"Thank", "you\n\n"}
     printMessage("Finished,", message)
+
+	var area, circumference = utils.Calculate(5.0)
+	fmt.Printf("Circle area %.2f, Circle circumference %.2f \n", area, circumference)
+
+	var rectangleArea = utils.Area(1, 2, 3, 4)
+	fmt.Printf("Rectangle area %.2f", rectangleArea)
 }
 
 func printMessage(message string, messages []string) {
