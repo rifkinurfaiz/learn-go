@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"learn-go/utils"
+	"learn-go/cube"
+	"learn-go/circle"
 )
 
 func main() {
+	fmt.Println("======= String class =======")
+
 	var name string = "messi"
 	formattedPi := fmt.Sprintf("Value: %.2f", 3.14)
 	fmt.Printf("Hello %s \n", name)
@@ -28,7 +31,7 @@ func main() {
 	fmt.Printf("Bentuk adalah " + square + "\n")
 	fmt.Printf("hari adalah %s \n", strconv.FormatBool(isToday))
 
-	for i:= 0; i < 5; i++ {
+	for i := 0; i < 5; i++ {
 		str := fmt.Sprintf("number %d", i)
 		fmt.Printf("Print %s \n", str)
 	}
@@ -40,14 +43,26 @@ func main() {
 		i++
 	}
 
-	var message = []string{"Thank", "you\n\n"}
-    printMessage("Finished,", message)
+	var message = []string{"Thank", "you =======\n"}
+    printMessage("======= String class finished,", message)
 
-	var area, circumference = utils.Calculate(5.0)
+	/**
+	 * Doing some math
+	 */
+
+	fmt.Println("======= Math class =======")
+
+	var area, circumference = circle.AreaAndCircumference(5.0)
 	fmt.Printf("Circle area %.2f, Circle circumference %.2f \n", area, circumference)
 
-	var rectangleArea = utils.Area(1, 2, 3, 4)
-	fmt.Printf("Rectangle area %.2f", rectangleArea)
+	var rectangleArea = cube.Area(1, 2, 3)
+	fmt.Printf("Cube area %.2f \n", rectangleArea)
+
+	var cubeVolume = cube.Volume(2.00, cube.Area)
+	fmt.Printf("Cube volume %.2f \n", cubeVolume)
+
+	fmt.Println("======= Math class finished, Thank you =======")
+
 }
 
 func printMessage(message string, messages []string) {
