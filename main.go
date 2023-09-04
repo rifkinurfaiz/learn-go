@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"learn-go/shapes/circle"
 	"learn-go/shapes/cube"
+	"learn-go/shapes"
 	"learn-go/structs"
+	"learn-go/shapes/rectangle"
 	"strconv"
 	"strings"
 )
@@ -101,11 +103,24 @@ func main() {
 
 	fmt.Printf("employee 1 name: %s \n", employee1.Name)
 	fmt.Printf("employee 1 age: %s \n", strconv.Itoa(employee1.Age))
-	fmt.Printf("employee 1 grade: %s \n", strconv.Itoa(employee1.Grade))
+	fmt.Printf("employee 1 grade: %s \n\n", strconv.Itoa(employee1.Grade))
 
-	fmt.Print("======= OOP class finished ======= \n\n")
+	var rect = rectangle.Rectangle{Width: 5, Height: 3}
+	var circle = circle.Circle{Radius: 2}
 
+	// Use the Shape interface to calculate the area and perimeter of both shapes.
+	var shapes = []shapes.Shape{rect, circle}
+
+	for _, shape := range shapes {
+		fmt.Printf("shape type: %T\n", shape)
+		fmt.Printf("area: %.2f\n", shape.Area())
+		fmt.Printf("perimeter: %.2f\n", shape.Perimeter())
+	}
+
+	fmt.Print("======= OOP class finished ======= \n")
 }
+
+
 
 func printMessage(message string, messages []string) {
 	var joinedMessage = getString(messages)
