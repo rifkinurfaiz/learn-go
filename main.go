@@ -2,13 +2,19 @@ package main
 
 import (
 	"fmt"
+	"learn-go/shapes/circle"
+	"learn-go/shapes/cube"
+	"learn-go/structs"
 	"strconv"
 	"strings"
-	"learn-go/cube"
-	"learn-go/circle"
 )
 
 func main() {
+	/**
+	 * ==========================================
+	 * 			   String manipulation
+	 * ==========================================
+	 */
 	fmt.Println("======= String class =======")
 
 	var name string = "messi"
@@ -47,9 +53,10 @@ func main() {
     printMessage("======= String class finished,", message)
 
 	/**
-	 * Doing some math
+	 * ========================================
+	 * 				Doing some math
+	 * ========================================
 	 */
-
 	fmt.Println("======= Math class =======")
 
 	var area, circumference = circle.AreaAndCircumference(5.0)
@@ -61,7 +68,42 @@ func main() {
 	var cubeVolume = cube.Volume(2.00, cube.Area)
 	fmt.Printf("Cube volume %.2f \n", cubeVolume)
 
-	fmt.Println("======= Math class finished, Thank you =======")
+	fmt.Print("======= Math class finished ======= \n\n")
+
+	/**
+	 * ==========================================
+	 * 					OOP
+	 * ==========================================
+	 */
+	fmt.Println("======= OOP class =======")
+
+	type student struct {
+		name string
+		grade int
+	}
+
+	student1 := student{}
+	student1.name = "messi"
+	student1.grade = 5
+
+	var student2 = student{"anto", 4}
+
+	fmt.Printf("student 1 name: %s \n", student1.name)
+	fmt.Printf("student 1 grade: %s \n", strconv.Itoa(student1.grade))
+
+	fmt.Printf("student 2 name: %s \n", student2.name)
+	fmt.Printf("student 2 grade: %s \n\n", strconv.Itoa(student1.grade))
+
+	var employee1 = structs.Employee{}
+	employee1.Name = "charles"
+	employee1.Age = 25
+	employee1.Grade = 10
+
+	fmt.Printf("employee 1 name: %s \n", employee1.Name)
+	fmt.Printf("employee 1 age: %s \n", strconv.Itoa(employee1.Age))
+	fmt.Printf("employee 1 grade: %s \n", strconv.Itoa(employee1.Grade))
+
+	fmt.Print("======= OOP class finished ======= \n\n")
 
 }
 

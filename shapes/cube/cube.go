@@ -9,6 +9,6 @@ type Clojure func(...int) float64
 func Volume(height float64, callback Clojure) float64 {
 	const width int = 6
 	const length int = 7
-	
+
 	return height * callback(5, width, length)
 }
