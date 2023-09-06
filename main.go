@@ -9,6 +9,7 @@ import (
 	"learn-go/shapes/rectangle"
 	"strconv"
 	"strings"
+	"runtime"
 )
 
 func main() {
@@ -117,10 +118,57 @@ func main() {
 		fmt.Printf("perimeter: %.2f\n", shape.Perimeter())
 	}
 
-	fmt.Print("======= OOP class finished ======= \n")
+	fmt.Print("======= OOP class finished ======= \n\n")
+
+	/**
+	 * ==========================================
+	 * 					GOROUTINE
+	 * ==========================================
+	 */
+	fmt.Println("======= GOROUTINE class =======")
+
+	runtime.GOMAXPROCS(2)
+
+	go print(5, "Hello there")
+	print(5, "Apa kabar")
+
+	var input float32
+	fmt.Scanln(&input)
+
+	fmt.Print("======= GOROUTINE class finished =======\n\n")
+
+	fmt.Println("======= Channel class =======")
+
+	runtime.GOMAXPROCS(2)
+
+    var messages = make(chan string)
+
+    var sayHelloTo = func(who string) {
+        var data = fmt.Sprintf("hello %s", who)
+        messages <- data
+    }
+
+    go sayHelloTo("charles leclerc")
+    go sayHelloTo("carlos sainz")
+    go sayHelloTo("lewis hamilton")
+
+    fmt.Println(<-messages)
+
+    var message2 = <-messages
+    fmt.Println(message2)
+
+    var message3 = <-messages
+    fmt.Println(message3)
+
+	fmt.Print("======= Channel class finished =======\n\n")
+
 }
 
-
+func print(till int, message string) {
+    for i := 0; i < till; i++ {
+        fmt.Println((i + 1), message)
+    }
+}
 
 func printMessage(message string, messages []string) {
 	var joinedMessage = getString(messages)
